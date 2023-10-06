@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://dwgx4noay17i"]
+
+[ext_resource type="Script" path="res://cube.cs" id="1_at14y"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_nej2d"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2ssh6"]
+
+[node name="Cube" type="RigidBody3D"]
+script = ExtResource("1_at14y")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_nej2d")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_2ssh6")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="OnTimerTimeOut"]
